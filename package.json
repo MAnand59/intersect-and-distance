@@ -1,0 +1,73 @@
+{
+  "name": "geo-intersection-util",
+  "version": "1.1.0",
+  "description": "Project geographic points onto an oriented centerline and measure perpendicular distance and side",
+  "keywords": [
+    "geospatial",
+    "geometry",
+    "centerline",
+    "linear-referencing",
+    "perpendicular-distance",
+    "intersection",
+    "gis"
+  ],
+  "author": "Mayank Anand <anand.mayank59@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MAnand59/intersect-and-distance.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MAnand59/intersect-and-distance/issues"
+  },
+  "homepage": "https://github.com/MAnand59/intersect-and-distance#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "overrides": {
+    "esbuild": "^0.28.2"
+  },
+  "scripts": {
+    "clean": "node scripts/clean.mjs",
+    "build": "npm run clean && tsup src/index.ts --format esm,cjs --dts --sourcemap",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "test:types": "tsc -p tests/types/tsconfig.json --noEmit",
+    "test:package": "node scripts/test-package.mjs",
+    "audit:prod": "npm audit --omit=dev --audit-level=high",
+    "check": "npm run typecheck && npm test && npm run test:types && npm run build && npm run test:package && npm run audit:prod",
+    "prepack": "npm run build"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
+    "@types/node": "^24.13.3",
+    "tsup": "^8.5.1",
+    "tsx": "^4.23.12",
+    "typescript": "^5.9.3"
+  }
+}

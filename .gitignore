@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Generated output and reports
+dist/
+coverage/
+*.tsbuildinfo
+*.tgz
+
+# Environment and local configuration
+.env
+.env.*
+!.env.example
+*.local
+
+# Logs and caches
+*.log
+.npm/
+.eslintcache
+
+# Editors and operating systems
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Temporary files
+tmp/
+.tmp/
